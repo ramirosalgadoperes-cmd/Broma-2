@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alerta del sistema</title>
+
+<style>
+    body {
+        margin: 0;
+        background: #000;
+        color: #00ff66;
+        font-family: monospace;
+        text-align: center;
+        padding: 30px 15px;
+    }
+
+    h1 {
+        color: red;
+        font-size: 28px;
+        animation: parpadeo 0.8s infinite;
+    }
+
+    #mensaje {
+        font-size: 18px;
+        margin-top: 35px;
+        line-height: 1.7;
+    }
+
+    #contador {
+        font-size: 70px;
+        color: red;
+        margin: 25px;
+    }
+
+    #final {
+        display: none;
+    }
+
+    #final h2 {
+        color: #ff4d6d;
+        font-size: 32px;
+    }
+
+    #final p {
+        font-size: 22px;
+        line-height: 1.6;
+    }
+
+    @keyframes parpadeo {
+        50% { opacity: 0.3; }
+    }
+</style>
+</head>
+
+<body>
+
+<h1 id="titulo">⚠️ ALERTA DEL SISTEMA ⚠️</h1>
+
+<div id="mensaje">
+    Simulación de acceso iniciada...<br>
+    Analizando sistema...<br>
+    Comprobando archivos...
+</div>
+
+<div id="contador">10</div>
+
+<div id="final">
+    <h2>😂 ¡ERA UNA BROMA!</h2>
+    <p>
+        ❤️ Te quiero muchísimo,<br>
+        de todo mi corazón, mamá ❤️
+    </p>
+    <p>
+        Tu teléfono está completamente bien 😄
+    </p>
+</div>
+
+<script>
+let numero = 10;
+
+const mensajes = [
+    "Analizando sistema...",
+    "Comprobando archivos...",
+    "Simulación de acceso en progreso...",
+    "Procesando información...",
+    "Casi terminado..."
+];
+
+let indice = 0;
+
+const intervalo = setInterval(() => {
+    numero--;
+    document.getElementById("contador").textContent = numero;
+
+    if (indice < mensajes.length) {
+        document.getElementById("mensaje").innerHTML =
+            mensajes[indice];
+        indice++;
+    }
+
+    if (numero <= 0) {
+        clearInterval(intervalo);
+
+        document.getElementById("titulo").style.display = "none";
+        document.getElementById("mensaje").style.display = "none";
+        document.getElementById("contador").style.display = "none";
+        document.getElementById("final").style.display = "block";
+    }
+}, 1000);
+</script>
+
+</body>
+</html>
